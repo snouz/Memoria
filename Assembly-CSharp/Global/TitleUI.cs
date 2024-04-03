@@ -362,6 +362,7 @@ public class TitleUI : UIScene
         {
             UI2DSprite sprite2D = this.MenuPanelObject.GetChild(0).GetComponent<UI2DSprite>();
             Sprite sprite = sprite2D.sprite2D;
+
             String externalPath = "StreamingAssets/UI/Sprites/US/" + sprite.name + ".png";
             if (File.Exists(externalPath))
             {
