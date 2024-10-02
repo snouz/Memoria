@@ -358,6 +358,48 @@ namespace Memoria.Launcher
             }
         }
 
+        private Int16 _soundVolume;
+        public Int16 SoundVolume
+        {
+            get { return _soundVolume; }
+            set
+            {
+                if (_soundVolume != value)
+                {
+                    _soundVolume = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
+        private Int16 _musicVolume;
+        public Int16 MusicVolume
+        {
+            get { return _musicVolume; }
+            set
+            {
+                if (_musicVolume != value)
+                {
+                    _musicVolume = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
+        private Int16 _movieVolume;
+        public Int16 MovieVolume
+        {
+            get { return _movieVolume; }
+            set
+            {
+                if (_movieVolume != value)
+                {
+                    _movieVolume = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
         private Int16 _worldmaptps;
         public Int16 WorldmapTPS
         {
@@ -664,6 +706,9 @@ namespace Memoria.Launcher
             // Sliders
             ["CameraStabilizer", "_camerastabilizer", "CameraStabilizer", "Graphics", 0, 1],
             ["BattleTPS", "_battletpsfactor", "BattleTPS", "Graphics", 0, 1],
+            ["SoundVolume", "_soundVolume", "SoundVolume", "Audio", 0, 1],
+            ["MusicVolume", "_musicVolume", "MusicVolume", "Audio", 0, 1],
+            ["MovieVolume", "_movieVolume", "MovieVolume", "Audio", 0, 1],
             ["WorldmapTPS", "_worldmaptps", "WorldTPS", "Graphics", 0, 1],
             ["WorldmapFOV", "_worldmapfov", "FieldOfView", "Worldmap", 0, 1],
             ["WMCameraHeight", "_wmcameraheight", "CameraHeight", "Worldmap", 0, 1],
@@ -1217,6 +1262,33 @@ namespace Memoria.Launcher
                     _battletpsfactor = 15;
                 Boolean valueexists = Single.TryParse(value, out Single decvalue);
                 BattleTPSDividedBy15 = valueexists ? decvalue / 15f : 1f;
+
+                value = iniFile.ReadValue("Audio", "SoundVolume");
+                if (String.IsNullOrEmpty(value))
+                {
+                    value = " 100";
+                    OnPropertyChanged(nameof(SoundVolume));
+                }
+                if (!Int16.TryParse(value, out _soundVolume))
+                    _soundVolume = 100;
+
+                value = iniFile.ReadValue("Audio", "MusicVolume");
+                if (String.IsNullOrEmpty(value))
+                {
+                    value = " 100";
+                    OnPropertyChanged(nameof(MusicVolume));
+                }
+                if (!Int16.TryParse(value, out _musicVolume))
+                    _musicVolume = 100;
+
+                value = iniFile.ReadValue("Audio", "MovieVolume");
+                if (String.IsNullOrEmpty(value))
+                {
+                    value = " 100";
+                    OnPropertyChanged(nameof(MovieVolume));
+                }
+                if (!Int16.TryParse(value, out _movieVolume))
+                    _movieVolume = 100;
 
                 value = iniFile.ReadValue("Graphics", "WorldTPS");
                 if (String.IsNullOrEmpty(value))

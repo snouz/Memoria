@@ -75,6 +75,12 @@
 	FontChoice = "フォント"
 	SBUIenabled = "スケーリングされたバトルUI"
 	BattleTPS = "バトルスピード"
+	
+	Volume = "音量"
+	SoundVolume = "効果音"
+	MusicVolume = "音楽"
+	MovieVolume = "ムービー"
+	
 	SharedFPS = "1秒間のフレーム数"
 	BattleFPS = "バトル"
 	FieldFPS = "フィールド"

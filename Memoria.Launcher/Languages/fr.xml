@@ -76,6 +76,12 @@
 	FontChoice = "Police"
 	SBUIenabled = "Scaled Battle UI"
 	BattleTPS = "Vitesse des combats"
+	
+	Volume = "Volume"
+	SoundVolume = "Bruitages"
+	MusicVolume = "Musique"
+	MovieVolume = "Films"
+	
 	SharedFPS = "Fréquence d'images / seconde"
 	BattleFPS = "Combat"
 	FieldFPS = "Décor"

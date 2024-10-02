@@ -71,6 +71,11 @@ UsePsxFont = "Use PSX font"
 FontChoice = "Font"
 BattleTPS = "Battle speed"
 
+Volume = "Volume"
+SoundVolume = "Sounds"
+MusicVolume = "Music"
+MovieVolume = "Movies"
+
 MaxCardCount = "10k cards"
 NoAutoTrance = "Manual trance"
 UIColumnsChoice = "UI lines/columns"

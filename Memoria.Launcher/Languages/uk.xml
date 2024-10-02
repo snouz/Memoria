@@ -75,6 +75,12 @@
 	FontChoice = "Шрифт"
 	SBUIenabled = "Масштабований бойовий інтерфейс"
 	BattleTPS = "Швидкість бою"
+	
+	Volume = "Гучність"
+	SoundVolume = "Звук"
+	MusicVolume = "Музика"
+	MovieVolume = "Відео"
+	
 	SharedFPS = "Кадрів на секунду"
 	BattleFPS = "Бій"
 	FieldFPS = "Поле"

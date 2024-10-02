@@ -75,6 +75,12 @@
 	FontChoice = "Fonte"
 	SBUIenabled = "Interface de Batalha do Usuário Ampliada"
 	BattleTPS = "Velocidade da Batalha"
+	
+	Volume = "Volume"
+	SoundVolume = "Som"
+	MusicVolume = "Música"
+	MovieVolume = "Filme"
+	
 	SharedFPS = "Frames por Segundo"
 	BattleFPS = "Batalha"
 	FieldFPS = "Campo"

@@ -79,6 +79,12 @@
 	FontChoice = "Шрифт"
 	SBUIenabled = "Масштабируемый интерфейс битвы"
 	BattleTPS = "Скорость анимации битвы"
+	
+	Volume = "Громкость"
+	SoundVolume = "Звук"
+	MusicVolume = "Музыка"
+	MovieVolume = "Видео"
+	
 	SharedFPS = "Частота кадров"
 	BattleFPS = "Бой"
 	FieldFPS = "Поле"
