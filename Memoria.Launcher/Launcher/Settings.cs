@@ -33,6 +33,7 @@ namespace Memoria.Launcher
                 }
             }
         }
+        /*
         private Int16 _antialiasing;
         public Int16 AntiAliasing
         {
@@ -46,6 +47,7 @@ namespace Memoria.Launcher
                 }
             }
         }
+        */
         private Int16 _isskipintros;
         public Int16 SkipIntros
         {
@@ -315,6 +317,58 @@ namespace Memoria.Launcher
                 if (_hippaulracingvivispeed != value)
                 {
                     _hippaulracingvivispeed = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+        private Int16 _audiobackend;
+        public Int16 AudioBackend
+        {
+            get { return _audiobackend; }
+            set
+            {
+                if (_audiobackend != value)
+                {
+                    _audiobackend = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+        private Int16 _worldsmoothtexture;
+        public Int16 WorldSmoothTexture
+        {
+            get { return _worldsmoothtexture; }
+            set
+            {
+                if (_worldsmoothtexture != value)
+                {
+                    _worldsmoothtexture = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+        private Int16 _battlesmoothtexture;
+        public Int16 BattleSmoothTexture
+        {
+            get { return _battlesmoothtexture; }
+            set
+            {
+                if (_battlesmoothtexture != value)
+                {
+                    _battlesmoothtexture = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+        private Int16 _elementssmoothtexture;
+        public Int16 ElementsSmoothTexture
+        {
+            get { return _elementssmoothtexture; }
+            set
+            {
+                if (_elementssmoothtexture != value)
+                {
+                    _elementssmoothtexture = value;
                     OnPropertyChanged();
                 }
             }
@@ -673,7 +727,7 @@ namespace Memoria.Launcher
             
             // Checkboxes
             ["WidescreenSupport", "_iswidescreensupport", "WidescreenSupport", "Graphics", 0, 1],
-            ["AntiAliasing", "_antialiasing", "AntiAliasing", "Graphics", 0, 1],
+            //["AntiAliasing", "_antialiasing", "AntiAliasing2", "Graphics", 0, 1],
             ["SkipIntros", "_isskipintros", "SkipIntros", "Graphics", 0, 3],
             ["BattleSwirlFrames", "_battleswirlframes", "BattleSwirlFrames", "Graphics", 70, 0],
             ["MaxCardCount", "_maxcardcount", "MaxCardCount", "TetraMaster", 100, 1000],
@@ -702,6 +756,11 @@ namespace Memoria.Launcher
             ["ExcaliburIINoTimeLimit", "_excaliburiinotimelimit", "ExcaliburIINoTimeLimit", "Hacks", 0, 1],
             ["EasyJumpRopeMinigame", "_easyjumpropeminigame", "RopeJumpingIncrement", "Hacks", 1, 1000],
             ["HippaulRacingViviSpeed", "_hippaulracingvivispeed", "HippaulRacingViviSpeed", "Hacks", 33, 100],
+
+            ["AudioBackend", "_audiobackend", "Backend", "Audio", 0, 1],
+            ["WorldSmoothTexture", "_worldsmoothtexture", "WorldSmoothTexture", "Graphics", 0, 1],
+            ["BattleSmoothTexture", "_battlesmoothtexture", "BattleSmoothTexture", "Graphics", 0, 1],
+            ["ElementsSmoothTexture", "_elementssmoothtexture", "ElementsSmoothTexture", "Graphics", 0, 1],
 
             // Sliders
             ["CameraStabilizer", "_camerastabilizer", "CameraStabilizer", "Graphics", 0, 1],
@@ -1080,7 +1139,7 @@ namespace Memoria.Launcher
                 String newvalue = (Int16.Parse(value) == 0) ? "1" : "0";
                 if (!Int16.TryParse(newvalue, out _battleswirlframes))
                     _battleswirlframes = 0;
-
+                /*
                 value = iniFile.ReadValue("Graphics", nameof(AntiAliasing));
                 if (String.IsNullOrEmpty(value))
                 {
@@ -1089,7 +1148,7 @@ namespace Memoria.Launcher
                 }
                 if (!Int16.TryParse(value, out _antialiasing))
                     _antialiasing = 1;
-
+                */
                 value = iniFile.ReadValue("Icons", nameof(HideCards));
                 if (String.IsNullOrEmpty(value))
                 {
@@ -1495,6 +1554,58 @@ namespace Memoria.Launcher
                     _hippaulracingvivispeed = 0;
                 else
                     _hippaulracingvivispeed = 1;
+
+
+                value = iniFile.ReadValue("Audio", "Backend");
+                if (String.IsNullOrEmpty(value))
+                {
+                    value = " 1";
+                    OnPropertyChanged(nameof(AudioBackend));
+                }
+                value1isInt = Int16.TryParse(value, out value1);
+                if (value1 == 0)
+                    _audiobackend = 0;
+                else
+                    _audiobackend = 1;
+
+
+                value = iniFile.ReadValue("Graphics", "WorldSmoothTexture");
+                if (String.IsNullOrEmpty(value))
+                {
+                    value = " 1";
+                    OnPropertyChanged(nameof(WorldSmoothTexture));
+                }
+                value1isInt = Int16.TryParse(value, out value1);
+                if (value1 == 0)
+                    _worldsmoothtexture = 0;
+                else
+                    _worldsmoothtexture = 1;
+
+
+                value = iniFile.ReadValue("Graphics", "BattleSmoothTexture");
+                if (String.IsNullOrEmpty(value))
+                {
+                    value = " 1";
+                    OnPropertyChanged(nameof(BattleSmoothTexture));
+                }
+                value1isInt = Int16.TryParse(value, out value1);
+                if (value1 == 0)
+                    _battlesmoothtexture = 0;
+                else
+                    _battlesmoothtexture = 1;
+
+                value = iniFile.ReadValue("Graphics", "ElementsSmoothTexture");
+                if (String.IsNullOrEmpty(value))
+                {
+                    value = " 1";
+                    OnPropertyChanged(nameof(ElementsSmoothTexture));
+                }
+                value1isInt = Int16.TryParse(value, out value1);
+                if (value1 == 0)
+                    _elementssmoothtexture = 0;
+                else
+                    _elementssmoothtexture = 1;
+
 
                 foreach (Object[] item in SettingsList)
                 {
