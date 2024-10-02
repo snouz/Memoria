@@ -1,14 +1,15 @@
 using System;
+using Application = System.Windows.Application;
 
 namespace Memoria.Launcher
 {
-    public sealed class SettingsGrid_Main : Settings
+    public sealed class SettingsGrid_Main : UiGrid
     {
         public SettingsGrid_Main()
         {
+            DataContext = (MainWindow)Application.Current.MainWindow;
 
             CreateHeading(Lang.Settings.QoL);
-
 
             CreateCheckbox("SkipIntros", Lang.Settings.SkipIntrosToMainMenu, Lang.Settings.SkipIntrosToMainMenu_Tooltip);
             CreateCheckbox("BattleSwirlFrames", Lang.Settings.SkipBattleSwirl, Lang.Settings.SkipBattleSwirl_Tooltip);
@@ -48,13 +49,6 @@ namespace Memoria.Launcher
             CreateSlider("SoundVolume", "SoundVolume", 0, 100, 5, "{0}", 50, Lang.Settings.SoundVolume);
             CreateSlider("MusicVolume", "MusicVolume", 0, 100, 5, "{0}", 50, Lang.Settings.MusicVolume);
             CreateSlider("MovieVolume", "MovieVolume", 0, 100, 5, "{0}", 50, Lang.Settings.MovieVolume);
-
-            LoadSettings();
-        }
-
-        public void ComeBackToLauncherReloadSettings()
-        {
-            LoadSettings();
         }
     }
 }
