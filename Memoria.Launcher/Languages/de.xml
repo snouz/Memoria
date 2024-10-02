@@ -203,7 +203,7 @@
 	Attack9999_Tooltip = "Jeder Angriff verursacht maximalen Schaden (F3)."
 	NoRandomBattles_Tooltip = "Keine zufälligen Begegnungen (F4)."
 	PermanentCheats_Tooltip = "Maximale Werte für alles (F5/F6/F7). Diese Cheats bleiben im Spielstand und deaktivieren Erfolge."
-	FontChoice_Tooltip = "Schriftart, die in Dialogen und der Benutzeroberfläche angezeigt wird. Einige Schriftarten werden von der Engine nicht erkannt."
+	FontChoice_Tooltip = "Schriftart, die in Dialogen und der Benutzeroberfläche angezeigt wird.&#xA;Hinweis: Das Spiel muss einmal gestartet werden, um die vollständige Liste der verfügbaren Schriftarten zu erstellen."
 	Cards = "Kartenspiel"
 	TripleTriad = "Regeln"
 	MaxCardCount_Tooltip = "Kartenlimit im Inventar auf 10.000 erhöht."
