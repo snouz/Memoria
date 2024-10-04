@@ -72,16 +72,20 @@ namespace Memoria.Launcher
         {
             if (!previousTabWasMod && ModManagerTab.IsSelected)
             {
-                AnimateHeight(ContentTabControl, 520, 600, TimeSpan.FromMilliseconds(500));
-                AnimateMargin(LogoImage, new Thickness(20, -53, 0, 0), new Thickness(20, -40, 0, 0), TimeSpan.FromMilliseconds(500));
-                AnimateHeight(LogoImage, 250, 150, TimeSpan.FromMilliseconds(500));
+                AnimateHeight(ContentTabControl, 520, 590, TimeSpan.FromMilliseconds(500));
+                AnimateMargin(LogoImage, new Thickness(20, -53, 0, 0), new Thickness(20, -20, 0, 0), TimeSpan.FromMilliseconds(500));
+                AnimateHeight(LogoImage, 250, 125, TimeSpan.FromMilliseconds(500));
+                AnimateMargin(PlayButton, new Thickness(0, 46, 20, 0), new Thickness(0, 15, 60, 0), TimeSpan.FromMilliseconds(500));
+                AnimateHeight(PlayButton, 70, 60, TimeSpan.FromMilliseconds(500));
                 previousTabWasMod = true;
             }
             else if (previousTabWasMod && !ModManagerTab.IsSelected)
             {
-                AnimateHeight(ContentTabControl, 600, 520, TimeSpan.FromMilliseconds(500));
-                AnimateMargin(LogoImage, new Thickness(20, -40, 0, 0), new Thickness(20, -53, 0, 0), TimeSpan.FromMilliseconds(500));
-                AnimateHeight(LogoImage, 150, 250, TimeSpan.FromMilliseconds(500));
+                AnimateHeight(ContentTabControl, 590, 520, TimeSpan.FromMilliseconds(500));
+                AnimateMargin(LogoImage, new Thickness(20, -20, 0, 0), new Thickness(20, -53, 0, 0), TimeSpan.FromMilliseconds(500));
+                AnimateHeight(LogoImage, 125, 250, TimeSpan.FromMilliseconds(500));
+                AnimateMargin(PlayButton, new Thickness(0, 15, 60, 0), new Thickness(0, 46, 20, 0), TimeSpan.FromMilliseconds(500));
+                AnimateHeight(PlayButton, 60, 70, TimeSpan.FromMilliseconds(500));
                 previousTabWasMod = false;
             }
         }
@@ -1003,7 +1007,7 @@ namespace Memoria.Launcher
                 PreviewModCategoryTagline.Visibility = Visibility.Collapsed;
                 BitmapImage bitmap = new BitmapImage();
                 bitmap.BeginInit();
-                bitmap.UriSource = new Uri("pack://application:,,,/images/no-disc.jpg");
+                bitmap.UriSource = new Uri("pack://application:,,,/images/Gradient.png");
                 bitmap.EndInit();
                 PreviewModImage.Source = bitmap;
             }
@@ -1056,11 +1060,12 @@ namespace Memoria.Launcher
                 {
                     if (tabCtrlMain.SelectedIndex == 0 && mod.PreviewFile != null)
                     {
-                        if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + "/" + mod.InstallationPath + "/" + mod.PreviewFile))
+                        String imagePath = $"./{mod.InstallationPath}/{mod.PreviewFile}";
+                        if (File.Exists(imagePath))
                         {
                             mod.PreviewImage = new BitmapImage();
                             mod.PreviewImage.BeginInit();
-                            mod.PreviewImage.UriSource = new Uri("file://" + AppDomain.CurrentDomain.BaseDirectory + "/" + mod.InstallationPath + "/" + mod.PreviewFile, UriKind.Absolute);
+                            mod.PreviewImage.UriSource = new Uri(imagePath, UriKind.Relative);
                             mod.PreviewImage.CacheOption = BitmapCacheOption.OnLoad;
                             mod.PreviewImage.EndInit();
                         }
@@ -1080,7 +1085,7 @@ namespace Memoria.Launcher
                 {
                     BitmapImage bitmap = new BitmapImage();
                     bitmap.BeginInit();
-                    bitmap.UriSource = new Uri("pack://application:,,,/images/no-disc.jpg");
+                    bitmap.UriSource = new Uri("pack://application:,,,/images/Gradient.png");
                     bitmap.EndInit();
                     PreviewModImage.Source = bitmap;
                 }

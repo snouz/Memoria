@@ -215,6 +215,9 @@
   <ItemGroup>
     <PackageReference Include="SharpCompress" Version="0.38.0" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Gradient.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="AfterResolveReferences">
     <ItemGroup>

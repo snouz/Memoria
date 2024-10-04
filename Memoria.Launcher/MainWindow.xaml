@@ -22,7 +22,7 @@
     <Window.Resources>
         
         <Style x:Key="ModInfoLabelStyle" TargetType="{x:Type TextBlock}">
-            <Setter Property="FontSize" Value="13" />
+            <Setter Property="FontSize" Value="14" />
             <Setter Property="Margin" Value="0,0,3,1" />
             <Setter Property="FontWeight" Value="DemiBold" />
             <Setter Property="VerticalAlignment" Value="Top" />
@@ -35,7 +35,7 @@
             <Setter Property="FontWeight" Value="Normal" />
             <Setter Property="TextWrapping" Value="Wrap" />
             <Setter Property="Padding" Value="0" />
-            <Setter Property="FontSize" Value="12" />
+            <Setter Property="FontSize" Value="14" />
             <Setter Property="VerticalAlignment" Value="Top" />
             <Setter Property="Foreground" Value="{StaticResource WhiteUI}" />
         </Style>
@@ -46,7 +46,7 @@
             <Setter Property="FontWeight" Value="Normal" />
             <Setter Property="TextWrapping" Value="Wrap" />
             <Setter Property="Padding" Value="0" />
-            <Setter Property="FontSize" Value="12" />
+            <Setter Property="FontSize" Value="14" />
             <Setter Property="VerticalAlignment" Value="Top" />
             <!--<Setter Property="Background" Value="#88404845" />-->
             <Setter Property="Foreground" Value="{StaticResource WhiteUI}" />
@@ -70,10 +70,9 @@
             <Setter Property="FontFamily" Value="{StaticResource CenturyGothic}" />
             <Setter Property="FontStretch" Value="UltraCondensed" />
             <Setter Property="TextWrapping" Value="Wrap" />
-            <Setter Property="Padding" Value="0,0,0,0" />
-            <Setter Property="FontSize" Value="20" />
+            <Setter Property="Padding" Value="0,5,0,0" />
+            <Setter Property="FontSize" Value="28" />
             <Setter Property="Foreground" Value="{StaticResource WhiteUI}" />
-            <Setter Property="Effect" Value="{StaticResource dropShadowEffect}" />
         </Style>
         <Style
             x:Key="ModVersionStyle"
@@ -434,6 +433,15 @@
                         HorizontalAlignment="Center"
                         VerticalAlignment="Top"
                         Content="" />
+                </Grid>
+            </TabItem>
+
+            <!-- Presets Tab -->
+            <TabItem x:Name="menuPresets"
+                Header="PRESETS"
+                Style="{StaticResource MainTabs}" >
+                <Grid Style="{StaticResource TransparentGridStyle}">
+
                 </Grid>
             </TabItem>
 
@@ -838,7 +846,7 @@
                                 Grid.Row="0"
                                 Grid.RowSpan="2"
                                 Grid.Column="2"
-                                Margin="7,0,0,0"
+                                Margin="7,-2,0,0"
                                 Padding="0,0,0,7"
                                 BorderThickness="0"
                                 Background="{StaticResource LightGreyUI}"
@@ -857,21 +865,19 @@
                                             Background="#333" />
                                     </TabItem.Header>
                                     <Grid x:Name="gridOuterMod"
-                                        Margin="0,-2,0,0" >
+                                        Margin="0">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="auto" MinHeight="20" MaxHeight="150" />
                                             <RowDefinition Height="auto" />
-                                            <RowDefinition Height="auto" />
                                             <RowDefinition Height="1*" />
-                                            <RowDefinition Height="auto"/>
                                         </Grid.RowDefinitions>
                                         <Grid x:Name="imagewrapper"
                                             Grid.Row="0"
                                             Height="auto"
                                             VerticalAlignment="Center"
-                                            Margin="-7,0,-7,0">
+                                            Margin="0">
                                             <Image x:Name="PreviewModImage"
-                                                Source="Images/no-disc.jpg"
+                                                Source="Images/Gradient.png"
                                                 Grid.Row="0"
                                                 Grid.RowSpan="1"
                                                 RenderOptions.BitmapScalingMode="HighQuality"
@@ -913,26 +919,21 @@
                                         <Grid x:Name="gridModName" 
                                             Grid.Row="1"
                                             Margin="7,0,7,0">
-                                            <ScrollViewer
-                                                HorizontalAlignment="Left"
-                                                VerticalScrollBarVisibility="Auto"
-                                                Height="auto">
-                                                <WrapPanel
-                                                    Grid.Row="0">
-                                                    <TextBlock
-                                                        x:Name="PreviewModName"
-                                                        MinWidth="20"
-                                                        Style="{StaticResource ModTitleStyle}"
-                                                        VerticalAlignment="Bottom"
-                                                        Text="---" />
-                                                    <TextBlock
-                                                        x:Name="PreviewModVersion"
-                                                        Margin="0"
-                                                        Style="{StaticResource ModVersionStyle}"
-                                                        VerticalAlignment="Bottom"
-                                                        Text="" />
-                                                </WrapPanel>
-                                            </ScrollViewer>
+                                            <WrapPanel
+                                                Grid.Row="0">
+                                                <TextBlock
+                                                    x:Name="PreviewModName"
+                                                    MinWidth="20"
+                                                    Style="{StaticResource ModTitleStyle}"
+                                                    VerticalAlignment="Bottom"
+                                                    Text="---" />
+                                                <TextBlock
+                                                    x:Name="PreviewModVersion"
+                                                    Margin="0"
+                                                    Style="{StaticResource ModVersionStyle}"
+                                                    VerticalAlignment="Bottom"
+                                                    Text="" />
+                                            </WrapPanel>
                                         </Grid>
 
                                         <ScrollViewer
@@ -1006,11 +1007,8 @@
                                                     </Grid>
                                                 </WrapPanel>
 
-                                                <ScrollViewer x:Name="ContentScroll"
-                                                    Grid.Row="2"
-                                                    HorizontalAlignment="Stretch"
-                                                    VerticalScrollBarVisibility="Auto"
-                                                    Height="456" >
+                                                <Grid x:Name="ContentScroll"
+                                                    Grid.Row="2">
                                                     <Grid>
                                                         <Grid.RowDefinitions>
                                                             <RowDefinition Height="auto" />
@@ -1020,7 +1018,7 @@
                                                         <WrapPanel
                                                             Grid.Row="0"
                                                             Height="auto">
-                                                            <Grid Margin="0,4,0,0" >
+                                                            <Grid Margin="0,10,0,0" >
                                                                 <Border
                                                                     Grid.Row="0"
                                                                     BorderThickness="3,0,0,0"
@@ -1089,13 +1087,12 @@
                                                                 </WrapPanel>
                                                             </Grid>
                                                         </WrapPanel>
-                                                        <ScrollViewer x:Name="ReleaseNotesBlock"
+                                                        <Grid x:Name="ReleaseNotesBlock"
                                                             Grid.Row="2"
-                                                            HorizontalAlignment="Stretch"
-                                                            VerticalScrollBarVisibility="Auto">
+                                                            HorizontalAlignment="Stretch">
                                                             <WrapPanel
                                                                 Background="{StaticResource DarkGreyUI}"
-                                                                Margin="0,7,6,0"
+                                                                Margin="0,10,6,0"
                                                                 Visibility="Visible">
                                                                 <DockPanel>
                                                                     <TextBlock x:Name="CaptionModReleaseNotes"
@@ -1111,9 +1108,9 @@
                                                                     VerticalAlignment="Bottom"
                                                                     Text="" />
                                                             </WrapPanel>
-                                                        </ScrollViewer>
+                                                        </Grid>
                                                     </Grid>
-                                                </ScrollViewer>
+                                                </Grid>
                                             </Grid>
                                         </ScrollViewer>
                                     </Grid>
@@ -1146,7 +1143,7 @@
         <!-- Play Button -->
         <launcher:UiLauncherPlayButton x:Name="PlayButton"
             Width="260"
-            Height="69"
+            Height="70"
             Margin="0,46,20,0"
             HorizontalAlignment="Right"
             VerticalAlignment="Top" />
