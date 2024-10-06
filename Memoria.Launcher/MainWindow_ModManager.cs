@@ -75,8 +75,6 @@ namespace Memoria.Launcher
                 AnimateHeight(ContentTabControl, 520, 590, TimeSpan.FromMilliseconds(500));
                 AnimateMargin(LogoImage, new Thickness(20, -53, 0, 0), new Thickness(20, -20, 0, 0), TimeSpan.FromMilliseconds(500));
                 AnimateHeight(LogoImage, 250, 125, TimeSpan.FromMilliseconds(500));
-                AnimateMargin(PlayButton, new Thickness(0, 46, 20, 0), new Thickness(0, 15, 60, 0), TimeSpan.FromMilliseconds(500));
-                AnimateHeight(PlayButton, 70, 60, TimeSpan.FromMilliseconds(500));
                 previousTabWasMod = true;
             }
             else if (previousTabWasMod && !ModManagerTab.IsSelected)
@@ -84,8 +82,6 @@ namespace Memoria.Launcher
                 AnimateHeight(ContentTabControl, 590, 520, TimeSpan.FromMilliseconds(500));
                 AnimateMargin(LogoImage, new Thickness(20, -20, 0, 0), new Thickness(20, -53, 0, 0), TimeSpan.FromMilliseconds(500));
                 AnimateHeight(LogoImage, 125, 250, TimeSpan.FromMilliseconds(500));
-                AnimateMargin(PlayButton, new Thickness(0, 15, 60, 0), new Thickness(0, 46, 20, 0), TimeSpan.FromMilliseconds(500));
-                AnimateHeight(PlayButton, 60, 70, TimeSpan.FromMilliseconds(500));
                 previousTabWasMod = false;
             }
         }
@@ -240,12 +236,8 @@ namespace Memoria.Launcher
                 }
             }
 
-            if (AreThereModUpdates && AreThereModIncompatibilies)
-                colMyModsIcons.Width = 40;
-            else if (AreThereModUpdates || AreThereModIncompatibilies)
-                colMyModsIcons.Width = 25;
-            else
-                colMyModsIcons.Width = 0;
+            colMyModsIcons.Width = colMyModsIcons.ActualWidth;
+            colMyModsIcons.Width = double.NaN;
             lstMods.Items.Refresh();
         }
 
