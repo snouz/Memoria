@@ -6,9 +6,10 @@
         Height="72">
     <Button.Resources>
         <DropShadowEffect x:Key="bdropShadowEffect"
-            BlurRadius="4" 
-            Direction="-45" 
-            Color="#555"
+            BlurRadius="4"
+            ShadowDepth="4"
+            Direction="-45"
+            Opacity="0.6"
             RenderingBias="Quality"/>
     </Button.Resources>
     <Button.Template>

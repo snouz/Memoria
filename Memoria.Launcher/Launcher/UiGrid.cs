@@ -392,8 +392,6 @@ namespace Memoria.Launcher
             //MakeTooltip(comboBox, tooltip, tooltipImage);
             if (property == "FontChoice")
                 MakeFontPreview(comboBox);
-            comboBox.Foreground = Brushes.Black;
-            comboBox.FontWeight = FontWeight.FromOpenTypeWeight(FontWeightCombobox);
             comboBox.Margin = CommonMargin;
             comboBox.Height = ComboboxHeight;
             if (selectByName)

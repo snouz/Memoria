@@ -23,7 +23,7 @@
 using System;
 using System.Windows.Media;
 
-namespace Memoria.Launcher.UI
+namespace Memoria.Launcher
 {
     public struct ALChColor
     {
