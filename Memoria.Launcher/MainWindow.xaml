@@ -2,8 +2,6 @@
     x:Class="Memoria.Launcher.MainWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:launcher="clr-namespace:Memoria.Launcher"
     Title="{Binding LauncherWindowTitle, FallbackValue='Final Fantasy IX | Memoria Launcher'}"
     Width="1000"
@@ -17,10 +15,7 @@
     Background="Transparent"
     DataContext="{Binding RelativeSource={RelativeSource Self}}">
 
-
-
     <Window.Resources>
-        
         <Style x:Key="ModInfoLabelStyle" TargetType="{x:Type TextBlock}">
             <Setter Property="FontSize" Value="14" />
             <Setter Property="Margin" Value="0,0,3,1" />
@@ -154,13 +149,8 @@
                 </Setter.Value>
             </Setter>
         </Style>
-        
-        <Style x:Key="SmallImageButton" TargetType="{x:Type Button}">
-            <Setter Property="Height" Value="44" />
-            <Setter Property="Width" Value="44" />
-        </Style>
 
-        <Style x:Name="subtab" TargetType="{x:Type TabItem}" x:Key="subtab">
+        <Style x:Key="subtab" TargetType="{x:Type TabItem}">
             <Setter Property="Margin" Value="0,0,0,0"/>
             <Setter Property="Width" Value="269"/>
             <Setter Property="Background" Value="#d000"/>
@@ -186,9 +176,9 @@
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsSelected" Value="True">
                                 <Setter TargetName="borderbottom" Property="Opacity" Value="0.9" />
-                                <Setter TargetName="borderbottom" Property="Background" Value="{StaticResource BrushAccentColor}" />
-                                <Setter TargetName="bordertop" Property="BorderBrush" Value="{StaticResource BrushAccentColorDarker}" />
-                                <Setter TargetName="borderbottom" Property="BorderBrush" Value="{StaticResource BrushAccentColorHover}" />
+                                <Setter TargetName="borderbottom" Property="Background" Value="{DynamicResource BrushAccentColor}" />
+                                <Setter TargetName="bordertop" Property="BorderBrush" Value="{DynamicResource BrushAccentColorDarker}" />
+                                <Setter TargetName="borderbottom" Property="BorderBrush" Value="{DynamicResource BrushAccentColorHover}" />
                                 <Setter TargetName="content" Property="TextBlock.Effect" Value="{StaticResource ButtondropShadowEffect}" />
                             </Trigger>
                             <Trigger Property="IsSelected" Value="False">
@@ -261,7 +251,7 @@
     <Grid>
         <!-- Background Image -->
         <Image x:Name="Launcher"
-            Height="889"
+            Stretch="UniformToFill"
             VerticalAlignment="Top"
             MouseDown="Launcher_MouseDown"
             Source="/images/new_launcher_bg.jpg" />
@@ -276,12 +266,7 @@
 
         <Button Width="45"
                 Height="28"
-                Foreground="White"
-                FontSize="14"
-                FontWeight="Thin"
-                FontStretch="ExtraExpanded"
                 BorderThickness="0"
-                BorderBrush="White"
                 HorizontalAlignment="Right"
                 VerticalAlignment="Top"
                 Click="CloseButton_Click">
@@ -294,9 +279,7 @@
             </Button.Template>
             <Button.Style>
                 <Style TargetType="Button">
-                    <Setter Property="Background" Value="#9777"/>
-                    <Setter Property="Foreground" Value="White"/>
-                    <Setter Property="OverridesDefaultStyle" Value="True"/>
+                    <Setter Property="Background" Value="#6AAA"/>
                     <Style.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter Property="Background" Value="#E81123"/>
@@ -1040,24 +1023,6 @@
                                     </Grid>
                                 </TabItem>
                             </TabControl>
-
-                            <Popup x:Name="popupFilters"
-                                Grid.ColumnSpan="3"
-                                Margin="0,0,0,26"
-                                HorizontalOffset="-140"
-                                Placement="Bottom"
-                                PlacementTarget="{Binding ElementName=btnFilters}"
-                                StaysOpen="False">
-                                <Grid>
-                                    <ListBox
-                                        MinWidth="165"
-                                        MaxHeight="225"
-                                        FontSize="13"
-                                        ItemContainerStyle="{StaticResource CategoryFilterListBoxItem}"
-                                        ItemsSource="{Binding AvailableFilters}"
-                                        ScrollViewer.CanContentScroll="False" />
-                                </Grid>
-                            </Popup>
                         </Grid>
                     </Grid>
                 </Grid>
