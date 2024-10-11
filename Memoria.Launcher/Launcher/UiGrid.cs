@@ -413,7 +413,7 @@ namespace Memoria.Launcher
         {
             if (text != "" && firstColumn > 0)
             {
-                CreateTextbloc(text, tooltip, tooltipImage, firstColumn);
+                CreateTextbloc(text, tooltip, tooltipImage, firstColumn - 2);
             }
             else if (firstColumn == 0)
             {
@@ -432,7 +432,7 @@ namespace Memoria.Launcher
             slider.IsSnapToTickEnabled = true;
             slider.TickPlacement = TickPlacement.None;
             slider.SetValue(RowProperty, Row);
-            slider.SetValue(ColumnProperty, firstColumn + 5);
+            slider.SetValue(ColumnProperty, firstColumn + 6);
             slider.SetValue(RowSpanProperty, 1);
             slider.SetValue(ColumnSpanProperty, (MaxColumns - firstColumn));
             slider.MouseWheel += (sender, e) =>
@@ -457,7 +457,7 @@ namespace Memoria.Launcher
             textbloc.Padding = new Thickness(0, 4, 0, 6);
             textbloc.Height = 28;
             textbloc.SetValue(RowProperty, Row);
-            textbloc.SetValue(ColumnProperty, firstColumn - 10);
+            textbloc.SetValue(ColumnProperty, firstColumn - 8);
             textbloc.SetValue(RowSpanProperty, 1);
             textbloc.SetValue(ColumnSpanProperty, 13);
             Children.Add(textbloc);
