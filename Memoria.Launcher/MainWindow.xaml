@@ -293,6 +293,7 @@
             Stretch="UniformToFill"
             VerticalAlignment="Top"
             MouseDown="Launcher_MouseDown"
+            RenderOptions.BitmapScalingMode="HighQuality"
             Source="/images/new_launcher_bg.jpg" />
 
         <Image x:Name="LogoImage"
@@ -301,6 +302,7 @@
             HorizontalAlignment="Left"
             Margin="20,-53,0,0"
             MouseDown="Launcher_MouseDown"
+            RenderOptions.BitmapScalingMode="HighQuality"
             Source="/images/FF9_logo.png" />
 
         <Button Width="45"

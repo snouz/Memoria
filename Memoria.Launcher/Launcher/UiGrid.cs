@@ -114,6 +114,7 @@ namespace Memoria.Launcher
                             HorizontalAlignment = HorizontalAlignment.Left,
                             Margin = new Thickness(0)
                         };
+                        RenderOptions.SetBitmapScalingMode(tooltipImage, BitmapScalingMode.HighQuality);
                         tooltipStackPanel.Children.Add(tooltipImage);
                     }
                     catch { }

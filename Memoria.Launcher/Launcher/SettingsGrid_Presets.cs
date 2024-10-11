@@ -70,7 +70,7 @@ namespace Memoria.Launcher
 
         private void ComboBox_SelectionChanged(Object sender, SelectionChangedEventArgs e)
         {
-            if(comboBox.ToolTip is ToolTip toolTip)
+            if (comboBox.ToolTip is ToolTip toolTip)
                 toolTip.IsOpen = false;
             comboBox.ToolTip = null;
 
@@ -104,8 +104,8 @@ namespace Memoria.Launcher
 
             Presets.Add(new Preset()
             {
-                Name = Lang.Settings.PresetMemoria,// "Memoria Default", // TODO language
-                Description = Lang.Settings.PresetMemoria_ToolTip, //"Reset all settings to Memoria default values", // TODO language
+                Name = Lang.Settings.PresetMemoria,
+                Description = Lang.Settings.PresetMemoria_ToolTip,
                 Settings = new IniReader(Assembly.GetExecutingAssembly().GetManifestResourceStream("Memoria.ini"))
             });
 
@@ -124,15 +124,15 @@ namespace Memoria.Launcher
 
             Presets.Add(new Preset()
             {
-                Name = Lang.Settings.PresetSteam,//"Steam Default", // TODO language
-                Description = Lang.Settings.PresetSteam_ToolTip,//"*Not recommended*\nReset all settings to Steam default values", // TODO language
+                Name = Lang.Settings.PresetSteam,
+                Description = Lang.Settings.PresetSteam_ToolTip,
                 Settings = new IniReader(Assembly.GetExecutingAssembly().GetManifestResourceStream("SteamPreset.ini"))
             });
 
             Presets.Add(new Preset()
             {
-                Name = Lang.Settings.PresetPSX,//"PSX-like", // TODO language
-                Description = Lang.Settings.PresetPSX_ToolTip,//"Closest settings to the original release on PSX such as encounter method, battle menu and more", // TODO language
+                Name = Lang.Settings.PresetPSX,
+                Description = Lang.Settings.PresetPSX_ToolTip,
                 Settings = new IniReader(Assembly.GetExecutingAssembly().GetManifestResourceStream("PSXPreset.ini"))
             });
 
@@ -147,10 +147,10 @@ namespace Memoria.Launcher
                     Presets.Add(new Preset()
                     {
                         Name = (settings.Options.ContainsKey(nameKey)) ? settings.Options[nameKey] : Path.GetFileNameWithoutExtension(file),
-                        Description = (settings.Options.ContainsKey(descKey)) ? settings.Options[descKey].Replace("\\n","\n") : "",
+                        Description = (settings.Options.ContainsKey(descKey)) ? settings.Options[descKey].Replace("\\n", "\n") : "",
                         Settings = settings
                     });
-                    
+
                 }
             }
         }
