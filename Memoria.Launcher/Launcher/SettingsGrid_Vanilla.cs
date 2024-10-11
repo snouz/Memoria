@@ -27,7 +27,7 @@ namespace Memoria.Launcher
                 CreateCheckbox("SteamOverlayFix", Lang.SteamOverlay.OptionLabel, Lang.Settings.SteamOverlayFix_Tooltip);
 
 
-            CreateCombobox("LauncherLanguage", LauncherLanguageList, 50, Lang.Settings.LauncherLanguage, Lang.Settings.LauncherLanguage_Tooltip, "", true);
+            CreateCombobox("LauncherLanguage", Lang.LauncherLanguageList, 50, Lang.Settings.LauncherLanguage, Lang.Settings.LauncherLanguage_Tooltip, "", true);
 
             try
             {
@@ -146,7 +146,6 @@ namespace Memoria.Launcher
             }
         }
 
-        private String[] LauncherLanguageList = { "en", "de", "es", "fr", "it", "jp", "pt-BR", "ru", "uk", "zh-CN" };
         private String _launcherlanguage;
         public String LauncherLanguage
         {
