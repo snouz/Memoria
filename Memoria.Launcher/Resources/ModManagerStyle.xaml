@@ -171,8 +171,19 @@
                             <Setter TargetName="borderbottom" Property="Background" Value="{StaticResource TabGradientUnselected}" />
                             <Setter TargetName="content" Property="TextBlock.FontWeight" Value="Normal" />
                         </Trigger>
-                        <Trigger Property="IsMouseOver" Value="True">
+                        <Trigger SourceName="borderbottom" Property="IsMouseOver" Value="True">
+                            <Setter TargetName="content" Property="TextBlock.Effect" Value="{StaticResource ButtondropShadowEffect}" />
+                            <Setter TargetName="borderbottom" Property="Opacity" Value="1" />
+                            <Setter TargetName="borderbottom" Property="BorderBrush" Value="{DynamicResource BrushAccentColorDarker}" />
                             <Setter TargetName="borderbottom" Property="Cursor" Value="Hand" />
+                            <Setter TargetName="borderbottom" Property="Background">
+                                <Setter.Value>
+                                    <LinearGradientBrush StartPoint="0.5,1" EndPoint="0.5,0">
+                                        <GradientStop Color="{DynamicResource AccentColorDarker}" Offset="0.0" />
+                                        <GradientStop Color="{DynamicResource AccentColorHover}" Offset="1.0" />
+                                    </LinearGradientBrush>
+                                </Setter.Value>
+                            </Setter>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
