@@ -74,6 +74,9 @@
     <Compile Include="Languages\XmlDocumentExm.cs" />
     <Compile Include="Languages\XmlHelper.cs" />
     <Compile Include="Launcher\ALChColor.cs" />
+    <Compile Include="Launcher\Window_NewPreset.xaml.cs">
+      <DependentUpon>Window_NewPreset.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Launcher\SettingsGrid_Advanced3.cs" />
     <Compile Include="Launcher\SettingsGrid_Advanced2.cs" />
     <Compile Include="Launcher\SettingsGrid_Advanced.cs" />
@@ -103,6 +106,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Launcher\Window_NewPreset.xaml">
+      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Resources\ButtonsStyle.xaml">

@@ -15,7 +15,7 @@
     Background="Transparent"
     DataContext="{Binding RelativeSource={RelativeSource Self}}">
 
-    <Grid>
+    <Grid x:Name="MainWindowGrid">
         <!-- Background Image -->
         <Image x:Name="Launcher"
             Stretch="UniformToFill"
@@ -106,6 +106,16 @@
                             Margin="0,15,20,0"
                             HorizontalAlignment="Right"
                             VerticalAlignment="Top" />
+
+                        <Button Name="NewPresetButton"
+                            Style="{StaticResource ButtonStyle2}"
+                            Width="293"
+                            Height="35"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Bottom"
+                            Margin="20"
+                            Content="Save settings"
+                            Click="SavePreset_Click"/>
                     </Grid>
                 </Border>
             </TabItem>
@@ -884,6 +894,5 @@
             Margin="22,0,0,2"
             HorizontalAlignment="Left"
             VerticalAlignment="Bottom" />
-
     </Grid>
 </Window>
