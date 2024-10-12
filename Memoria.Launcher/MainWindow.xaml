@@ -176,7 +176,7 @@
                             Height="35"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Bottom"
-                            Margin="0,0,0,15"
+                            Margin="0,0,0,20"
                             Content="Model Viewer"
                             Click="ModelViewerButton_Click"/>
 
@@ -185,7 +185,7 @@
                             HorizontalAlignment="Right"
                             VerticalAlignment="Bottom"
                             Width="293"
-                            Margin="0,0,15,15" >
+                            Margin="20" >
                             <TextBlock x:Name="CopyLogButton_StatusMessage"
                                 Visibility="Collapsed"
                                 HorizontalAlignment="Center"
