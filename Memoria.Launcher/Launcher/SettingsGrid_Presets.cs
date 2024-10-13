@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Reflection;
 using System.Windows;
@@ -74,6 +75,9 @@ namespace Memoria.Launcher
                 toolTip.IsOpen = false;
             comboBox.ToolTip = null;
 
+            if (comboBox.SelectedIndex < 0)
+                return;
+
             if (!String.IsNullOrEmpty(Presets[comboBox.SelectedIndex].Description))
             {
                 MakeTooltip(comboBox, Presets[comboBox.SelectedIndex].Description);
@@ -96,7 +100,7 @@ namespace Memoria.Launcher
             }
         }
 
-        public List<Preset> Presets = new List<Preset>();
+        public ObservableCollection<Preset> Presets = new ObservableCollection<Preset>();
 
         public void RefreshPresets()
         {
@@ -112,15 +116,14 @@ namespace Memoria.Launcher
             List<IniReader.Key> toRemove = new List<IniReader.Key>();
             foreach (var key in Presets[0].Settings.Options.Keys)
             {
-                if (key.Section == "Mod")
+                List<String> options = ["Audio.MusicVolume", "Audio.SoundVolume", "Audio.MovieVolume", "VoiceActing.Volume"];
+                if (key.Section == "Mod" || options.Contains($"{key.Section}.{key.Name}"))
                     toRemove.Add(key);
             }
             foreach (var key in toRemove)
             {
                 Presets[0].Settings.Options.Remove(key);
             }
-
-            var st = Assembly.GetExecutingAssembly().GetManifestResourceStream("SteamPreset.ini");
 
             Presets.Add(new Preset()
             {
@@ -152,6 +155,11 @@ namespace Memoria.Launcher
                     });
 
                 }
+            }
+            if (comboBox != null)
+            {
+                comboBox.SelectedIndex = 0;
+                MakeTooltip(comboBox, Presets[0].Description);
             }
         }
     }
