@@ -5,11 +5,15 @@ using System.IO;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media.Imaging;
 
 namespace Memoria.Launcher
 {
     public sealed class SettingsGrid_Presets : UiGrid
     {
+        private ComboBox comboBox;
+        private Button deleteBtn;
+
         public SettingsGrid_Presets()
         {
             DataContext = this;
@@ -47,6 +51,29 @@ namespace Memoria.Launcher
             comboBox.SelectionChanged += ComboBox_SelectionChanged;
             Children.Add(comboBox);
 
+            deleteBtn = new Button();
+            deleteBtn.SetResourceReference(Button.StyleProperty, "ButtonStyleRed");
+            deleteBtn.Height = ComboboxHeight + 2;
+            deleteBtn.IsEnabled = false;
+            deleteBtn.Visibility = Visibility.Hidden;
+            deleteBtn.SetValue(RowProperty, Row);
+            deleteBtn.SetValue(ColumnProperty, 52);
+            deleteBtn.SetValue(RowSpanProperty, 1);
+            deleteBtn.SetValue(ColumnSpanProperty, 8);
+            deleteBtn.Content = new Image
+            {
+                Source = new BitmapImage(new Uri("pack://application:,,,/images/btnUninstallimg_small.png")),
+                Height = 15,
+                Width = 15,
+                HorizontalAlignment = HorizontalAlignment.Center,
+                VerticalAlignment = VerticalAlignment.Center,
+                Margin = new Thickness(0)
+            };
+            deleteBtn.Click += DeleteBtn_Click;
+            Children.Add(deleteBtn);
+
+            MakeTooltip(deleteBtn, "Launcher.DeletePreset_Tooltip", "", "hand");
+
             Button applyBtn = new Button();
             applyBtn.SetResourceReference(Button.ContentProperty, "Settings.Apply");
             applyBtn.SetResourceReference(Button.StyleProperty, "ButtonStyle");
@@ -54,12 +81,22 @@ namespace Memoria.Launcher
             applyBtn.SetValue(RowProperty, Row);
             applyBtn.SetValue(ColumnProperty, 61);
             applyBtn.SetValue(RowSpanProperty, 1);
-            applyBtn.SetValue(ColumnSpanProperty, MaxColumns - 61);
+            applyBtn.SetValue(ColumnSpanProperty, MaxColumns);
             applyBtn.Click += ApplyBtn_Click;
             Children.Add(applyBtn);
         }
 
-        private ComboBox comboBox;
+        private void DeleteBtn_Click(Object sender, RoutedEventArgs e)
+        {
+            if (comboBox.SelectedIndex < 0 || Presets[comboBox.SelectedIndex].Path == null)
+                return;
+
+            if (MessageBox.Show((String)Lang.Res["Launcher.DeletePresetText"], (String)Lang.Res["Launcher.DeletePresetCaption"], MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+            {
+                File.Delete(Presets[comboBox.SelectedIndex].Path);
+                RefreshPresets();
+            }
+        }
 
         private void ApplyBtn_Click(Object sender, RoutedEventArgs e)
         {
@@ -84,6 +121,19 @@ namespace Memoria.Launcher
             if (comboBox.SelectedIndex < 0)
                 return;
 
+            if (comboBox.SelectedIndex < 3)
+            {
+                comboBox.SetValue(ColumnSpanProperty, 60);
+                deleteBtn.IsEnabled = false;
+                deleteBtn.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                comboBox.SetValue(ColumnSpanProperty, 51);
+                deleteBtn.IsEnabled = true;
+                deleteBtn.Visibility = Visibility.Visible;
+            }
+
             if (!String.IsNullOrEmpty(Presets[comboBox.SelectedIndex].Description))
             {
                 MakeTooltip(comboBox, Presets[comboBox.SelectedIndex].Description);
@@ -95,6 +145,7 @@ namespace Memoria.Launcher
 
         public struct Preset
         {
+            public String Path;
             public String Name;
             public String Description;
 
@@ -111,6 +162,13 @@ namespace Memoria.Launcher
         public void RefreshPresets()
         {
             Presets.Clear();
+
+            if (comboBox != null && deleteBtn != null)
+            {
+                comboBox.SetValue(ColumnSpanProperty, 60);
+                deleteBtn.IsEnabled = false;
+                deleteBtn.Visibility = Visibility.Hidden;
+            }
 
             Presets.Add(new Preset()
             {
@@ -155,6 +213,7 @@ namespace Memoria.Launcher
                     IniReader.Key descKey = new IniReader.Key("Preset", "Description");
                     Presets.Add(new Preset()
                     {
+                        Path = file,
                         Name = (settings.Options.ContainsKey(nameKey)) ? settings.Options[nameKey] : Path.GetFileNameWithoutExtension(file),
                         Description = (settings.Options.ContainsKey(descKey)) ? settings.Options[descKey].Replace("\\n", "\n") : "",
                         Settings = settings

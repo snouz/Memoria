@@ -60,7 +60,7 @@ namespace Memoria.Launcher
             String path = $"Presets/{PresetName.Text.Trim()}.ini";
             if (File.Exists(path))
             {
-                if (MessageBox.Show((String)Lang.Res["Launcher.OverridePresetMessage"], (String)Lang.Res["Launcher.OverridePresetTitle"], MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
+                if (MessageBox.Show((String)Lang.Res["Launcher.OverridePresetMessage"], (String)Lang.Res["Launcher.OverridePresetCaption"], MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
                     return;
             }
 
