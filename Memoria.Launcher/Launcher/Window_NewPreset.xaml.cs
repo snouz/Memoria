@@ -1,10 +1,10 @@
 ﻿using System;
-using System.Windows;
-using System.Windows.Input;
-using System.Text.RegularExpressions;
-using System.Windows.Controls;
-using System.Windows.Media;
 using System.IO;
+using System.Text.RegularExpressions;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
+using System.Windows.Media;
 
 namespace Memoria.Launcher
 {
@@ -77,14 +77,14 @@ namespace Memoria.Launcher
             IniReader reader = new IniReader(IniFile.IniPath);
             reader.WriteAllSettings(path, IncludeMods.IsChecked == true ? ["Debug", "Export", "Import"] : ["Mod", "Debug", "Export", "Import"], ["Audio.MusicVolume", "Audio.SoundVolume", "Audio.MovieVolume", "VoiceActing.Volume"]);
 
-            ((MainWindow)((Grid)Parent).Parent).SettingsGrid_Presets.RefreshPresets();
+            ((MainWindow)Application.Current.MainWindow).SettingsGrid_Presets.RefreshPresets();
 
             Close(this, null);
         }
 
         private void PresetName_KeyUp(Object sender, KeyEventArgs e)
         {
-            if(e.Key == Key.Enter)
+            if (e.Key == Key.Enter)
             {
                 Ok_Click(this, null);
                 e.Handled = true;

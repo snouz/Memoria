@@ -17,14 +17,14 @@ namespace Memoria.Launcher
             try
             {
                 RefreshPresets();
+
             }
             catch { }
 
-            CreateHeading(Lang.Settings.Presets);
+            CreateHeading("Settings.Presets");
 
             Row++;
             RowDefinitions.Add(new RowDefinition());
-
             comboBox = new ComboBox();
             comboBox.ItemsSource = Presets;
             comboBox.FontWeight = FontWeight.FromOpenTypeWeight(FontWeightCombobox);
@@ -34,8 +34,12 @@ namespace Memoria.Launcher
             comboBox.SetValue(ColumnProperty, 0);
             comboBox.SetValue(RowSpanProperty, 1);
             comboBox.SetValue(ColumnSpanProperty, 60);
-            comboBox.SelectedIndex = 0;
-            MakeTooltip(comboBox, Presets[0].Description);
+            try
+            {
+                comboBox.SelectedIndex = 0;
+                MakeTooltip(comboBox, Presets[0].Description);
+            }
+            catch { }
             comboBox.MouseEnter += (sender, e) =>
             {
                 comboBox.Focus();
@@ -44,9 +48,9 @@ namespace Memoria.Launcher
             Children.Add(comboBox);
 
             Button applyBtn = new Button();
-            applyBtn.Content = Lang.Settings.Apply;
-            applyBtn.Height = ComboboxHeight + 2;
+            applyBtn.SetResourceReference(Button.ContentProperty, "Settings.Apply");
             applyBtn.SetResourceReference(Button.StyleProperty, "ButtonStyle");
+            applyBtn.Height = ComboboxHeight + 2;
             applyBtn.SetValue(RowProperty, Row);
             applyBtn.SetValue(ColumnProperty, 61);
             applyBtn.SetValue(RowSpanProperty, 1);
@@ -59,7 +63,7 @@ namespace Memoria.Launcher
 
         private void ApplyBtn_Click(Object sender, RoutedEventArgs e)
         {
-            if (MessageBox.Show(Lang.Settings.ApplyPresetText, Lang.Settings.ApplyPresetCaption, MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            if (MessageBox.Show((String)Lang.Res["Settings.ApplyPresetText"], (String)Lang.Res["Settings.ApplyPresetCaption"], MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
                 IniReader settings = Presets[comboBox.SelectedIndex].Settings;
                 settings.WriteAllSettings(IniFile.IniPath, ["Preset"]);
@@ -108,8 +112,8 @@ namespace Memoria.Launcher
 
             Presets.Add(new Preset()
             {
-                Name = Lang.Settings.PresetMemoria,
-                Description = Lang.Settings.PresetMemoria_ToolTip,
+                Name = (String)Lang.Res["Settings.PresetMemoria"],
+                Description = (String)Lang.Res["Settings.PresetMemoria_ToolTip"],
                 Settings = new IniReader(Assembly.GetExecutingAssembly().GetManifestResourceStream("Memoria.ini"))
             });
 
@@ -127,15 +131,15 @@ namespace Memoria.Launcher
 
             Presets.Add(new Preset()
             {
-                Name = Lang.Settings.PresetSteam,
-                Description = Lang.Settings.PresetSteam_ToolTip,
+                Name = (String)Lang.Res["Settings.PresetSteam"],
+                Description = (String)Lang.Res["Settings.PresetSteam_ToolTip"],
                 Settings = new IniReader(Assembly.GetExecutingAssembly().GetManifestResourceStream("SteamPreset.ini"))
             });
 
             Presets.Add(new Preset()
             {
-                Name = Lang.Settings.PresetPSX,
-                Description = Lang.Settings.PresetPSX_ToolTip,
+                Name = (String)Lang.Res["Settings.PresetPSX"],
+                Description = (String)Lang.Res["Settings.PresetPSX_ToolTip"],
                 Settings = new IniReader(Assembly.GetExecutingAssembly().GetManifestResourceStream("PSXPreset.ini"))
             });
 
