@@ -108,13 +108,13 @@
                             VerticalAlignment="Top" />
 
                         <Button Name="NewPresetButton"
+                            Content="{DynamicResource Launcher.SaveSettings}"
                             Style="{StaticResource ButtonStyle2}"
                             Width="293"
                             Height="35"
                             HorizontalAlignment="Right"
                             VerticalAlignment="Bottom"
                             Margin="20"
-                            Content="Save settings"
                             Click="SavePreset_Click"/>
                     </Grid>
                 </Border>

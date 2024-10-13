@@ -259,7 +259,7 @@ namespace Memoria.Launcher
             }
             if (downloadCatalogClient != null && downloadCatalogClient.IsBusy)
                 downloadCatalogClient.CancelAsync();
-            UpdateSettings();
+            UpdateModSettings();
             //((MainWindow)this.Owner).ModdingWindow = null;
             //((MainWindow)this.Owner).LoadSettings();
             //((MainWindow)this.Owner).ComeBackToLauncherFromModManager(AreThereModUpdates, AreThereModIncompatibilies);
@@ -919,7 +919,7 @@ namespace Memoria.Launcher
         private static String currentColor;
         private static String currentImage;
 
-        private void UpdateLauncherTheme()
+        public void UpdateLauncherTheme()
         {
             String color = DefaultAccentColor;
             String image = DefaultBackgroundImage;
@@ -1175,7 +1175,7 @@ namespace Memoria.Launcher
             lstCatalogMods.ItemsSource = modListCatalog;
         }
 
-        private void LoadSettings2()
+        public void LoadModSettings()
         {
             modListInstalled.Clear();
             try
@@ -1241,7 +1241,7 @@ namespace Memoria.Launcher
             catch (Exception ex) { UiHelper.ShowError(Application.Current.MainWindow, ex); }
         }
 
-        private void UpdateSettings()
+        public void UpdateModSettings()
         {
             try
             {

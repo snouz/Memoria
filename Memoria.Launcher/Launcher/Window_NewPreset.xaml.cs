@@ -16,8 +16,7 @@ namespace Memoria.Launcher
         public Window_NewPreset()
         {
             InitializeComponent();
-            // TODO Language
-            UiGrid.MakeTooltip(IncludeMods, "If enabled, this preset will override enabled mods when applied.\nOtherwise enabled mods will remain totally unaffected when applying this preset.");
+            UiGrid.MakeTooltip(IncludeMods, "Launcher.IncludeMods_Tooltip");
         }
 
         private void Close(Object sender, RoutedEventArgs e)
@@ -55,11 +54,13 @@ namespace Memoria.Launcher
 
         private void Ok_Click(Object sender, RoutedEventArgs e)
         {
+            MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
+            mainWindow.UpdateModSettings();
+
             String path = $"Presets/{PresetName.Text.Trim()}.ini";
             if (File.Exists(path))
             {
-                // TODO Language
-                if (MessageBox.Show("A preset with this name already exists. Do you want to replace it?", "Overwrite Preset?", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
+                if (MessageBox.Show((String)Lang.Res["Launcher.OverridePresetMessage"], (String)Lang.Res["Launcher.OverridePresetTitle"], MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
                     return;
             }
 
@@ -75,9 +76,13 @@ namespace Memoria.Launcher
             File.WriteAllText(path, header);
 
             IniReader reader = new IniReader(IniFile.IniPath);
-            reader.WriteAllSettings(path, IncludeMods.IsChecked == true ? ["Debug", "Export", "Import"] : ["Mod", "Debug", "Export", "Import"], ["Audio.MusicVolume", "Audio.SoundVolume", "Audio.MovieVolume", "VoiceActing.Volume"]);
+            if(IncludeMods.IsChecked == true)
+                reader.WriteAllSettings(path, ["Debug", "Export", "Import"], ["Mod.UseFileList", "Mod.MergeScripts", "Audio.MusicVolume", "Audio.SoundVolume", "Audio.MovieVolume", "VoiceActing.Volume"]);
+            else
+                reader.WriteAllSettings(path, ["Mod", "Debug", "Export", "Import"], ["Audio.MusicVolume", "Audio.SoundVolume", "Audio.MovieVolume", "VoiceActing.Volume"]);
 
-            ((MainWindow)Application.Current.MainWindow).SettingsGrid_Presets.RefreshPresets();
+
+            mainWindow.SettingsGrid_Presets.RefreshPresets();
 
             Close(this, null);
         }

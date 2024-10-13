@@ -70,6 +70,8 @@ namespace Memoria.Launcher
 
                 MainWindow mainWindow = (MainWindow)this.GetRootElement();
                 mainWindow.LoadSettings();
+                mainWindow.LoadModSettings();
+                mainWindow.UpdateLauncherTheme();
             }
         }
 
@@ -113,7 +115,7 @@ namespace Memoria.Launcher
             Presets.Add(new Preset()
             {
                 Name = (String)Lang.Res["Settings.PresetMemoria"],
-                Description = (String)Lang.Res["Settings.PresetMemoria_ToolTip"],
+                Description = (String)Lang.Res["Settings.PresetMemoria_Tooltip"],
                 Settings = new IniReader(Assembly.GetExecutingAssembly().GetManifestResourceStream("Memoria.ini"))
             });
 
@@ -132,14 +134,14 @@ namespace Memoria.Launcher
             Presets.Add(new Preset()
             {
                 Name = (String)Lang.Res["Settings.PresetSteam"],
-                Description = (String)Lang.Res["Settings.PresetSteam_ToolTip"],
+                Description = (String)Lang.Res["Settings.PresetSteam_Tooltip"],
                 Settings = new IniReader(Assembly.GetExecutingAssembly().GetManifestResourceStream("SteamPreset.ini"))
             });
 
             Presets.Add(new Preset()
             {
                 Name = (String)Lang.Res["Settings.PresetPSX"],
-                Description = (String)Lang.Res["Settings.PresetPSX_ToolTip"],
+                Description = (String)Lang.Res["Settings.PresetPSX_Tooltip"],
                 Settings = new IniReader(Assembly.GetExecutingAssembly().GetManifestResourceStream("PSXPreset.ini"))
             });
 

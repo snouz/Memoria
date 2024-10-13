@@ -7,8 +7,17 @@
     <system:String x:Key="Settings.menuAdvanced">ADVANCED</system:String>
     <system:String x:Key="Settings.menuCheats">CHEATS</system:String>
     <system:String x:Key="Settings.menuMods">MODS</system:String>
+    
+    <system:String x:Key="Launcher.SaveSettings">Save Settings</system:String>
 
     <system:String x:Key="Launcher.ModelViewer">Model Viewer</system:String>
     <system:String x:Key="Launcher.CopyLogButton">Copy Log</system:String>
+
+    <system:String x:Key="Launcher.NewPreset">New Preset</system:String>
+    <system:String x:Key="Launcher.PresetName">Name</system:String>
+    <system:String x:Key="Launcher.PresetDescription">Description (optional)</system:String>
+    <system:String x:Key="Launcher.IncludeMods">Include mods</system:String>
+    <system:String x:Key="Launcher.OK">OK</system:String>
+    <system:String x:Key="Launcher.Cancel">Cancel</system:String>
 
 </ResourceDictionary>
